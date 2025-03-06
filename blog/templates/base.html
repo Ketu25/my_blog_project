@@ -1,0 +1,22 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Blog</title>
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}! 
+              <a href="{% url 'logout' %}">Logout</a>
+            </p>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> | 
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </header>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
