@@ -5,6 +5,15 @@
 </head>
 <body>
     <h1>Blog Posts</h1>
+    {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}! 
+              <a href="{% url 'logout' %}">Logout</a> | 
+              <a href="{% url 'post_create' %}">Add Post</a>
+            </p>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> | 
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
     <ul>
         {% for post in posts %}
             <li>

@@ -6,6 +6,12 @@
 <body>
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
+    <p>Published on: {{ post.published_date }}</p>
+    {% if user.is_staff %}
+      <p>
+        <a href="{% url 'post_delete' post.pk %}">Delete Post</a>
+      </p>
+    {% endif %}
     <hr>
     <h2>Comments</h2>
     <ul>
