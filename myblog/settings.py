@@ -121,7 +121,9 @@ LOGOUT_REDIRECT_URL = '/'     # Redirect to homepage after logout
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+CKEDITOR_UPLOAD_PATH = "uploads/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

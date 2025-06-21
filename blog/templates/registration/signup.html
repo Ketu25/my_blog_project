@@ -1,11 +1,20 @@
 <!-- templates/registration/signup.html -->
-{% extends "base.html" %}
+{% comment %} {% extends "base.html" %} {% endcomment %}
+{% load static %}
 
 {% block content %}
-  <h2>Sign Up</h2>
-  <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Sign Up</button>
-  </form>
+  <!-- Link to the external CSS file for sign-up -->
+  <link rel="stylesheet" href="{% static 'blog/css/signup.css' %}">
+
+  <div class="signup-container">
+    <!-- Right Section -->
+    <div class="right-section">
+      <form method="post" class="signup-form">
+        {% csrf_token %}
+        <h2>Sign Up</h2>
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
 {% endblock %}

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Post
 from .forms import CommentForm
-from .forms import PostForm
+from .forms import PostForm,CustomUserCreationForm
 from .models import Post
 
 def post_list(request):
@@ -36,13 +36,13 @@ def post_detail(request, pk):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)  # Log the user in after signup
             return redirect('post_list')  # Redirect to your blog homepage
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
 @login_required

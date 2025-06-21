@@ -1,12 +1,32 @@
 <!-- templates/registration/login.html -->
-{% extends "base.html" %}
+{% comment %} {% extends "base.html" %} {% endcomment %}
+{% load static %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Login</button>
-  </form>
-  <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="{% static 'blog/css/login.css' %}">
+  {% include "includes/navbar.html" %}
+  <!-- Full-page login container -->
+  <div class="login-container">
+    
+
+    <!-- Right (Yellow) Section -->
+    <div class="right-section">
+      <form method="post" class="login-form">
+        {% csrf_token %}
+        <h2>Login</h2>
+        {{ form.as_p }}
+
+        <!-- "Forgot Password?" link  -->
+        <a href="{% url 'password_reset' %}">Forgot Password?</a>
+
+        <button type="submit">Login</button>
+        
+        <!-- Signup link -->
+        <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+      </form>
+    </div>
+
+
+  </div>
 {% endblock %}
